@@ -5,6 +5,7 @@ import learning.spring.binarytea.model.Size;
 import learning.spring.binarytea.repository.MenuRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheConfig;
+import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
@@ -25,5 +26,15 @@ public class MenuService {
     @Cacheable(key = "#root.methodName + '-' + #name + '-' + #size")
     public Optional<MenuItem> getByNameAndSize(String name, Size size) {
         return menuRepository.findByNameAndSize(name, size);
+    }
+
+    @CacheEvict(value = "menu", key = "#root.methodName + '-' + #name + '-' + #size")
+    public String deleteCache(String name, Size size) {
+        return name + " " + size + " deleted!";
+    }
+
+    @CacheEvict()
+    public void deleteAllMenu() {
+
     }
 }

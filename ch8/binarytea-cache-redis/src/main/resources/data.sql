@@ -1,5 +1,5 @@
-insert into t_menu (name, size, price, create_time, update_time) values ('Java咖啡', 'MEDIUM', 1200, now(), now());
-insert into t_menu (name, size, price, create_time, update_time) values ('Java咖啡', 'LARGE', 1500, now(), now());
+insert into t_menu (name, size, price, create_time, update_time) values ('j1', 'MEDIUM', 1200, now(), now());
+insert into t_menu (name, size, price, create_time, update_time) values ('j2', 'LARGE', 1500, now(), now());
 
 insert into t_tea_maker (name, create_time, update_time) values ('LiLei', now(), now());
 insert into t_tea_maker (name, create_time, update_time) values ('HanMeimei', now(), now());

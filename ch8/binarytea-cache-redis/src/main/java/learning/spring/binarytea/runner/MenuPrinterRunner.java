@@ -20,9 +20,13 @@ public class MenuPrinterRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        menuService.deleteAllMenu();
         log.info("再次加载菜单列表，应该不会访问数据库");
         List<MenuItem> list = menuService.getAllMenu();
         log.info("共有{}个饮品可选。", list.size());
+        list.forEach(i -> log.info("重新查询菜单项({})：{}", i.getId(),
+                menuService.deleteCache(i.getName(), i.getSize())));
+//        Thread.sleep(10000);
         list.forEach(i -> log.info("重新查询菜单项({})：{}", i.getId(),
                 menuService.getByNameAndSize(i.getName(), i.getSize())));
     }
